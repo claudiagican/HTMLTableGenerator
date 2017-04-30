@@ -1,0 +1,59 @@
+﻿<Window x:Class="HTMLTableGenerator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HTMLTableGenerator"
+        mc:Ignorable="d"
+        Title="HTML Code Generator" Height="600" Width="800" >
+    <DockPanel>
+        
+        <GroupBox DockPanel.Dock="Top" Header=" HTML settings " Margin="11">
+            <Grid Margin="11">
+
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="150"/>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="105"/>
+                </Grid.ColumnDefinitions>
+
+                <Label Grid.Row="0" Grid.Column="0" Content="Image source folder"/>
+                <TextBox Grid.Row="0" Grid.Column="1" Grid.ColumnSpan="2" Name="FolderPath" VerticalAlignment="Center" Text="d:\FLORI\Flori RO - culori\flori-verzi-maro\1.de postat-verzi\" />
+                <Button Grid.Row="0" Grid.Column="3" Name="BrowseFolder" Content="Browse" Click="BrowseFolder_Click" Height="19" Width="100" HorizontalAlignment="Left" Margin="5 0 0 0"/>
+
+                <Label Grid.Row="1" Grid.Column="0" Content="HTML image width" />
+                <TextBox Grid.Row="1" Grid.Column="1" Name="ImageWidth" VerticalAlignment="Center" TextAlignment="Left" Text="540" Width="100" HorizontalAlignment="Left"/>
+
+                <CheckBox Grid.Row="2" Grid.Column="0" Name="UsingTable" Content="Generate HTML table" VerticalAlignment="Center" IsChecked="True" />
+                <Label Grid.Row="2" Grid.Column="1" Content="Columns number" />
+                <TextBox Grid.Row="2" Grid.Column="2" Name="ColumnsNumber" Text="2" TextAlignment="Left" VerticalAlignment="Center" HorizontalAlignment="Left" Width="100"/>
+
+                <Label Grid.Row="3" Grid.Column="0" Content="HTML href/src URL" />
+                <TextBox Grid.Row="3" Grid.Column="1" Grid.ColumnSpan="3" Name="ImageURLRoot" VerticalAlignment="Center" Text="http://www.meetsun.ro/wp-content/uploads/Flori-Verzi-Maro/" />
+                
+            </Grid>
+        </GroupBox>
+        <DockPanel DockPanel.Dock="Top" Margin="11" VerticalAlignment="Top">
+            <TextBlock TextWrapping="Wrap" IsEnabled="False" Margin="7,0,0,0" DockPanel.Dock="Left" HorizontalAlignment="Right">
+                HTML template<LineBreak/>
+                Use placeholders:<LineBreak/>
+                __IMG_NAME__ as anchor ID<LineBreak/>
+                __LINK__ as image link<LineBreak/>
+                __TEXT__ as description or attributes: alt, title<LineBreak/>
+                __SIZE__ as image width<LineBreak/>
+                __COUNT__ as counter<LineBreak/>
+            </TextBlock>
+            <TextBox Name="HTMLTemplate" AcceptsReturn="True" HorizontalAlignment="Stretch" ScrollViewer.VerticalScrollBarVisibility="Auto" Margin="7,0,0,0" Height="200" />
+        </DockPanel>
+        <Button Name="CreateHTML" Content="Generate HTML" Click="CreateHTML_Click" DockPanel.Dock="Top" Width="130" Padding="10, 2"/>
+        <TextBox Name="Result" AcceptsReturn="True" Margin="11" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto"/>
+    </DockPanel>
+    
+</Window>
